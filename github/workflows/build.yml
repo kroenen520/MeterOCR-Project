@@ -35,7 +35,7 @@ jobs:
     # 4. 预下载OCR模型（避免每次运行都下载）
     - name: Pre-download OCR models
       run: |
-        python -c "from paddleocr import PaddleOCR; ocr = PaddleOCR(use_angle_cls=True, lang='ch', show_log=True); print('Models downloaded')"
+        python -c "from paddleocr import PaddleOCR; ocr = PaddleOCR(use_angle_cls=True, lang='ch'); print('Models downloaded')"
     
     # 5. 打包成EXE
     - name: Build EXE
