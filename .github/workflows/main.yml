@@ -24,7 +24,7 @@ jobs:
     
     - name: Pre-download OCR models
       run: |
-        python -c "from paddleocr import PaddleOCR; ocr = PaddleOCR(use_angle_cls=True, lang='ch', show_log=True); print('OK')"
+        python -c "from paddleocr import PaddleOCR; ocr = PaddleOCR(use_textline_orientation=True, lang='ch'); print('OK')"
     
     - name: Build EXE
       run: pyinstaller meter_ocr.spec --clean
@@ -33,7 +33,7 @@ jobs:
       run: |
         mkdir release
         copy dist\MeterOCR.exe release\
-        echo 电表OCR批量识别工具 > release\使用说明.txt
+        echo 电表OCR批量识别工具 v1.0.0 > release\使用说明.txt
     
     - name: Upload artifact
       uses: actions/upload-artifact@v4
