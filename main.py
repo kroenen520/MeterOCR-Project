@@ -54,7 +54,6 @@ class MeterOCRApp:
             print("首次运行会自动下载模型文件，请耐心等待...\n")
             
             self.ocr = PaddleOCR(
-                use_textline_orientation=True,
                 lang='ch'
             )
             print("✓ OCR引擎初始化完成！\n")
