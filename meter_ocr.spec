@@ -16,9 +16,12 @@ a = Analysis(
     pathex=[str(project_root)],                     # 项目路径
     binaries=[],                                    # 额外的二进制文件
     datas=[],                                       # 额外的数据文件
-    hiddenimports=[                                 # 隐藏导入（PyInstaller可能检测不到的模块）
+    hiddenimports=[                                 # 隐藏导入
         'paddle',
         'paddleocr',
+        'paddleocr.ppstructure',
+        'paddleocr.ppocr',
+        'paddleocr.ppocr.utils',
         'openpyxl',
         'openpyxl.styles',
         'skimage',
@@ -30,11 +33,13 @@ a = Analysis(
         'pyclipper',
         'lmdb',
         'tqdm',
+        'visualdl',
+        ' paddlenlp',
     ],
-    hookspath=[],                                   # 额外的hook路径
-    hooksconfig={},                                 # hook配置
-    runtime_hooks=[],                               # 运行时hook
-    excludes=[],                                    # 排除的模块
+    hookspath=[],
+    hooksconfig={},
+    runtime_hooks=[],
+    excludes=[],
     win_no_prefer_redirects=False,
     win_private_assemblies=False,
     cipher=None,
@@ -59,10 +64,10 @@ exe = EXE(
     upx=True,                                       # 使用UPX压缩
     upx_exclude=[],
     runtime_tmpdir=None,
-    console=True,                                   # 显示控制台窗口（方便查看进度）
+    console=True,                                   # 显示控制台窗口
     disable_windowed_traceback=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=None,                                      # 可以指定图标文件: 'icon.ico'
+    icon=None,
 )
