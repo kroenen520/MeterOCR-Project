@@ -57,7 +57,6 @@ class MeterOCRApp:
                 use_angle_cls=True,
                 lang='ch',
                 use_gpu=use_gpu,
-                show_log=False,
                 enable_mkldnn=True
             )
             print("✓ OCR引擎初始化完成！\n")
