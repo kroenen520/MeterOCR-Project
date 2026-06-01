@@ -1,0 +1,43 @@
+name: Build MeterOCR EXE
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install pyinstaller
+    
+    - name: Pre-download OCR models
+      run: |
+        python -c "from paddleocr import PaddleOCR; ocr = PaddleOCR(use_angle_cls=True, lang='ch', show_log=True); print('OK')"
+    
+    - name: Build EXE
+      run: pyinstaller meter_ocr.spec --clean
+    
+    - name: Create release package
+      run: |
+        mkdir release
+        copy dist\MeterOCR.exe release\
+        echo 电表OCR批量识别工具 > release\使用说明.txt
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: MeterOCR-EXE
+        path: release/
+        retention-days: 30
