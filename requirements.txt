@@ -1,0 +1,18 @@
+# 电表OCR识别工具 - Python依赖
+# 安装命令: pip install -r requirements.txt
+
+# 核心OCR库
+paddleocr>=2.7.0
+paddlepaddle>=2.5.0
+
+# Excel处理
+openpyxl>=3.1.0
+
+# 图像处理
+Pillow>=9.0.0
+
+# 打包工具（开发用）
+pyinstaller>=5.13.0
+
+# 可选：进度条
+tqdm>=4.65.0
