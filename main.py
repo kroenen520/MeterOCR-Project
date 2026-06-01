@@ -47,7 +47,7 @@ class MeterOCRApp:
         self.current_pattern = re.compile(r'\b\d+\.?\d*\b')
         self.image_extensions = {'.jpg', '.jpeg', '.png', '.bmp', '.gif', '.tiff', '.webp'}
         
-    def initialize_ocr(self, use_gpu: bool = False) -> bool:
+    def initialize_ocr(self) -> bool:
         """初始化OCR引擎"""
         try:
             print("正在初始化OCR引擎...")
@@ -55,9 +55,7 @@ class MeterOCRApp:
             
             self.ocr = PaddleOCR(
                 use_textline_orientation=True,
-                lang='ch',
-                use_gpu=use_gpu,
-                enable_mkldnn=True
+                lang='ch'
             )
             print("✓ OCR引擎初始化完成！\n")
             return True
